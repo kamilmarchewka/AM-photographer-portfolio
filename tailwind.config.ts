@@ -1,3 +1,4 @@
+import { transform } from "next/dist/build/swc";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -16,6 +17,36 @@ const config: Config = {
       colors: {
         white: "#FEFCFB",
         black: "#1E1E24",
+      },
+      keyframes: {
+        navLinkUpper: {
+          "0%": {
+            transform: "translateX(-100%)",
+            opacity: "1",
+          },
+          "50%,70%": {
+            transform: "translateX(0%)",
+            opacity: "1",
+          },
+          "100%": {
+            transform: "translateX(100%)",
+            opacity: "0",
+          },
+        },
+        navLinkLower: {
+          "0%": {
+            transform: "translateX(100%)",
+            opacity: "1",
+          },
+          "50%,70%": {
+            transform: "translateX(0%)",
+            opacity: "1",
+          },
+          "100%": {
+            transform: "translateX(-100%)",
+            opacity: "0",
+          },
+        },
       },
       fontFamily: {
         lato: ["var(--lato)"],

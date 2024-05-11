@@ -7,12 +7,14 @@ export default function Navigation() {
     { text: "kontakt", href: "/kontakt" },
   ];
   return (
-    <div className="flex justify-between items-center pl-7">
+    <div className="fixed w-full top-0 left-0 flex justify-between items-center pl-7 bg-white z-50 ">
       <span>LOGO</span>
       <nav className="">
-        <ul className="flex gap-5">
+        <ul className="flex">
           {navLinks.map(({ text, href }) => (
-            <NavLink key={text} href={href} text={text}></NavLink>
+            <li>
+              <NavLink key={text} href={href} text={text}></NavLink>
+            </li>
           ))}
         </ul>
       </nav>
