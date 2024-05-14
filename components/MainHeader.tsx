@@ -6,6 +6,12 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FadeInImage from "./FadeInImage";
+
+import p1 from "/public/p1.jpg";
+import p2 from "/public/p2.jpg";
+import p3 from "/public/p3.jpg";
+import p4 from "/public/p4.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,10 +67,29 @@ export default function MainHeader() {
       ref={container}
       className="relative h-screen max-w-7xl mx-auto  w-full"
     >
-      <div className="absolute inset-0 m-auto aspect-square min-w-[30rem] w-[40vw] max-w-[45rem]">
+      {/* Camera len */}
+      <div className="absolute inset-0 m-auto aspect-square min-w-[30rem] w-[40vw] max-w-[45rem] z-40">
         <CameraLen />
       </div>
+
+      {/* Scroll down arrow */}
       <ScrollDownArrow />
+
+      {/* Images */}
+      <div className="w-full h-full bg-yellow-400 grid grid-cols-10 grid-rows-10 grid-tem">
+        <div className="absolute left-[3rem] top-[4rem] w-[20rem]">
+          <FadeInImage src={p3} />
+        </div>
+        <div className="absolute left-[24rem] bottom-[2rem] w-[12rem]">
+          <FadeInImage src={p4} />
+        </div>
+        <div className="absolute right-[4rem] bottom-[5rem] w-[15rem]">
+          <FadeInImage src={p2} />
+        </div>
+        <div className="absolute right-[13rem] top-[6rem] w-[9rem]">
+          <FadeInImage src={p1} />
+        </div>
+      </div>
     </section>
   );
 }
