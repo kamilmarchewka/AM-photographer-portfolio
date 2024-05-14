@@ -20,16 +20,6 @@ export default function MainHeader() {
   useGSAP(
     () => {
       const tlIntro = gsap.timeline();
-      const tlScroll = gsap.timeline({
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top top",
-          end: "+=1000",
-          pin: true,
-          scrub: true,
-        },
-      });
-
       tlIntro.set(".arrow", {
         strokeDasharray: 1481,
       });
@@ -50,6 +40,16 @@ export default function MainHeader() {
         "<80%"
       );
 
+      const tlScroll = gsap.timeline({
+        ease: "none",
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: "+=1000",
+          pin: true,
+          scrub: true,
+        },
+      });
       tlScroll.to(".cameraLen", {
         autoAlpha: 0,
         scale: 7,
@@ -74,22 +74,6 @@ export default function MainHeader() {
 
       {/* Scroll down arrow */}
       <ScrollDownArrow />
-
-      {/* Images */}
-      <div className="w-full h-full bg-yellow-400 grid grid-cols-10 grid-rows-10 grid-tem">
-        <div className="absolute left-[3rem] top-[4rem] w-[20rem]">
-          <FadeInImage src={p3} />
-        </div>
-        <div className="absolute left-[24rem] bottom-[2rem] w-[12rem]">
-          <FadeInImage src={p4} />
-        </div>
-        <div className="absolute right-[4rem] bottom-[5rem] w-[15rem]">
-          <FadeInImage src={p2} />
-        </div>
-        <div className="absolute right-[13rem] top-[6rem] w-[9rem]">
-          <FadeInImage src={p1} />
-        </div>
-      </div>
     </section>
   );
 }
