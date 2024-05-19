@@ -1,6 +1,7 @@
+"use client";
 import React from "react";
 
-export default function CameraLen() {
+export default function CameraLen({ addToTimeline }: { addToTimeline: any }) {
   return (
     <svg
       viewBox="0 0 24 24"

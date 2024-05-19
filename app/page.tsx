@@ -1,7 +1,6 @@
 import MainHeader from "@/components/MainHeader";
 import PhotosSections from "@/components/PhotosSections";
-import MainTl from "@/components/MainTl";
-import HomePage from "@/components/navigation/home-page/HomePage";
+import HomePage from "@/components/home-page/HomePage";
 
 export default function Home() {
   return (

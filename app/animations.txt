@@ -1,0 +1,70 @@
+ ////////////////// Strzałka 
+ let tl = gsap.timeline({
+        defaults: {
+          ease: "power2.in",
+        },
+      });
+      tl.set(".arrow", {
+        strokeDasharray: 1481,
+      });
+      tl.from(".arrow", {
+        strokeDashoffset: 1481,
+        duration: 2,
+      });
+      tl.from(
+        ".arrow-text",
+        {
+          autoAlpha: 0,
+          scale: 0.95,
+          stagger: 0.02,
+          duration: 0.2,
+        },
+        "<80%"
+      );
+///////////////////////////////////
+
+
+
+
+
+
+
+
+//////////////////////////////// ???
+ // const tlScroll = gsap.timeline({
+      //   ease: "none",
+      //   scrollTrigger: {
+      //     trigger: container.current,
+      //     start: "top top",
+      //     end: "+=1000",
+      //     pin: true,
+      //     scrub: true,
+      //   },
+      // });
+      // tlScroll.to(".cameraLen", {
+      //   autoAlpha: 0,
+      //   scale: 7,
+      //   rotate: 180,
+      // });
+      // tlScroll.to(".scrollDownArrow", { autoAlpha: 0 }, "<");
+      // tlScroll.set(".scrollDownArrow", { display: "none" });
+      // tlScroll.set(".cameraLen", { display: "none" });
+
+
+
+
+
+
+/////////////////////Czary ze zdjęciami 
+ gsap.from(".title", {
+        autoAlpha: 0,
+        x: 200,
+        scrollTrigger: {
+          trigger: container.current,
+          scrub: true,
+          start: "top top",
+          end: "+=1000",
+          pin: true,
+        },
+      });
+      ///////////////////////////////////////
