@@ -15,20 +15,21 @@ import p4 from "/public/p4.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function MainHeader() {
+export default function MainHeader({ addTimeline }: { addTimeline: any }) {
   const container = useRef(null);
   useGSAP(
     () => {
-      const tlIntro = gsap.timeline();
-      tlIntro.set(".arrow", {
+      const mainTl = gsap.timeline();
+
+      mainTl.set(".arrow", {
         strokeDasharray: 1481,
       });
-      tlIntro.from(".arrow", {
+      mainTl.from(".arrow", {
         strokeDashoffset: 1481,
         duration: 2,
         ease: "power2.in",
       });
-      tlIntro.from(
+      mainTl.from(
         ".arrow-text",
         {
           autoAlpha: 0,
@@ -40,26 +41,28 @@ export default function MainHeader() {
         "<80%"
       );
 
-      const tlScroll = gsap.timeline({
-        ease: "none",
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top top",
-          end: "+=1000",
-          pin: true,
-          scrub: true,
-        },
-      });
-      tlScroll.to(".cameraLen", {
-        autoAlpha: 0,
-        scale: 7,
-        rotate: 180,
-      });
-      tlScroll.to(".scrollDownArrow", { autoAlpha: 0 }, "<");
-      tlScroll.set(".scrollDownArrow", { display: "none" });
-      tlScroll.set(".cameraLen", { display: "none" });
+      addTimeline(mainTl);
+
+      // const tlScroll = gsap.timeline({
+      //   ease: "none",
+      //   scrollTrigger: {
+      //     trigger: container.current,
+      //     start: "top top",
+      //     end: "+=1000",
+      //     pin: true,
+      //     scrub: true,
+      //   },
+      // });
+      // tlScroll.to(".cameraLen", {
+      //   autoAlpha: 0,
+      //   scale: 7,
+      //   rotate: 180,
+      // });
+      // tlScroll.to(".scrollDownArrow", { autoAlpha: 0 }, "<");
+      // tlScroll.set(".scrollDownArrow", { display: "none" });
+      // tlScroll.set(".cameraLen", { display: "none" });
     },
-    { scope: container }
+    { scope: container, dependencies: addTimeline }
   );
 
   return (
@@ -71,7 +74,6 @@ export default function MainHeader() {
       <div className="absolute inset-0 m-auto aspect-square min-w-[30rem] w-[40vw] max-w-[45rem] z-40">
         <CameraLen />
       </div>
-
       {/* Scroll down arrow */}
       <ScrollDownArrow />
     </section>
