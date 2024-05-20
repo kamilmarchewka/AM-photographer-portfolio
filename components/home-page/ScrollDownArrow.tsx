@@ -4,45 +4,14 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 
 export default function ScrollDownArrow() {
-  const arrow = useRef(null);
-
-  useGSAP(
-    () => {
-      let tl = gsap
-        .timeline({
-          defaults: {
-            ease: "power2.in",
-          },
-        })
-        .set(".arrow", {
-          strokeDasharray: 1481,
-        })
-        .from(".arrow", {
-          strokeDashoffset: 1481,
-          duration: 2,
-        })
-        .from(
-          ".arrow-text",
-          {
-            autoAlpha: 0,
-            scale: 0.95,
-            stagger: 0.02,
-            duration: 0.2,
-          },
-          "<80%"
-        );
-    },
-    { scope: arrow }
-  );
   return (
     <svg
-      ref={arrow}
       width="435"
       height="501"
       viewBox="0 0 435 501"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className=" fixed z-30 right-2 bottom-5 min-w-[18rem] w-[30vw] max-w-[25rem] h-fit mt-14"
+      className="arrow fixed z-30 right-2 bottom-5 min-w-[18rem] w-[30vw] max-w-[25rem] h-fit mt-14"
     >
       <path
         d="M404.5 1C327 62.6667 177.5 213.2 199.5 322C227 458 360.5 428.5 410.5 366C460.5 303.5 391 147.5 221.5 240C85.9 314 22.3333 439.167 7.5 492.5L1 460.5L11 498.5C21.3333 487.167 45.6 465.2 60 468"

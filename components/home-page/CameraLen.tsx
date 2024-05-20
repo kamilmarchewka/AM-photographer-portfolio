@@ -1,7 +1,9 @@
 "use client";
+import { useGSAP } from "@gsap/react";
 import React from "react";
+import gsap from "gsap";
 
-export default function CameraLen({ addToTimeline }: { addToTimeline: any }) {
+export default function CameraLen() {
   return (
     <svg
       viewBox="0 0 24 24"
