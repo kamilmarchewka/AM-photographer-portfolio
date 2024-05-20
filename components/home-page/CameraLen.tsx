@@ -8,7 +8,7 @@ export default function CameraLen() {
     <svg
       viewBox="0 0 24 24"
       fill="none"
-      className="cameraLen block w-full aspect-square"
+      className="camera-len block w-full aspect-square"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

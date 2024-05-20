@@ -11,60 +11,41 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function HomePage() {
   const headerContainer = useRef(null);
-
-  function arrowAnim() {
-    const tl = gsap
-      .timeline({
-        defaults: {
-          ease: "power2.in",
-        },
-      })
-      .set(".arrow", {
-        strokeDasharray: 1481,
-      })
-      .from(".arrow", {
-        strokeDashoffset: 1481,
-        duration: 2,
-      })
-      .from(
-        ".arrow-text",
-        {
-          autoAlpha: 0,
-          scale: 0.95,
-          stagger: 0.02,
-          duration: 0.2,
-        },
-        "<80%"
-      );
-
-    return tl;
-  }
-  function lenAnim() {
-    const tl = gsap
-      .timeline({
-        ease: "none",
-        scrollTrigger: {
-          trigger: headerContainer.current,
-          start: "top top",
-          end: "+=2000",
-          pin: true,
-          scrub: true,
-        },
-      })
-      .to(".cameraLen", { rotate: 180, scale: 8 })
-      .to([".cameraLen", ".arrow"], { autoAlpha: 0 }, "<");
-
-    return tl;
-  }
+  const categoriesContainer = useRef(null);
 
   useGSAP(
     () => {
-      const mainTl = gsap.timeline();
-      mainTl.add(arrowAnim());
-      mainTl.add(lenAnim());
+      const tl = gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: headerContainer.current,
+            scrub: true,
+            pin: true,
+            end: "+=1000",
+            pinSpacing: false,
+          },
+        })
+        .to(".camera-len", { autoAlpha: 0 });
     },
     { scope: headerContainer }
   );
+
+  // useGSAP(
+  //   () => {
+  //     let targets = gsap.utils.toArray(".container");
+  //     targets.map((t) => {
+  //       gsap.from(".title", {
+  //         autoAlpha: 0,
+  //         scrollTrigger: {
+  //           trigger: t,
+  //           pin: true,
+  //           scrub: true,
+  //         },
+  //       });
+  //     });
+  //   },
+  //   { scope: categoriesContainer }
+  // );
 
   return (
     <>
@@ -79,9 +60,18 @@ export default function HomePage() {
         {/* Scroll down arrow */}
         <ScrollDownArrow />
       </header>
-      <section>
-        <div className="bg-yellow-100 h-screen">
-          <h2>dupa</h2>
+      <section
+        ref={categoriesContainer}
+        className="pt-[50vh] max-w-7xl mx-auto  w-full"
+      >
+        <div className="container flex items-center justify-center bg-yellow-100 h-screen mx-auto ">
+          <h2 className="title">dupa</h2>
+        </div>
+        <div className="container flex items-center justify-center bg-yellow-100 h-screen mx-auto ">
+          <h2 className="title">dupa</h2>
+        </div>
+        <div className="container flex items-center justify-center bg-yellow-100 h-screen mx-auto ">
+          <h2 className="title">dupa</h2>
         </div>
       </section>
     </>
