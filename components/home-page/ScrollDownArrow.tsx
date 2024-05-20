@@ -3,13 +3,40 @@ import { useGSAP } from "@gsap/react";
 import React, { useRef } from "react";
 import gsap from "gsap";
 
-export default function ScrollDownArrow({
-  addToTimeline,
-}: {
-  addToTimeline: any;
-}) {
+export default function ScrollDownArrow() {
+  const arrow = useRef(null);
+
+  useGSAP(
+    () => {
+      let tl = gsap
+        .timeline({
+          defaults: {
+            ease: "power2.in",
+          },
+        })
+        .set(".arrow", {
+          strokeDasharray: 1481,
+        })
+        .from(".arrow", {
+          strokeDashoffset: 1481,
+          duration: 2,
+        })
+        .from(
+          ".arrow-text",
+          {
+            autoAlpha: 0,
+            scale: 0.95,
+            stagger: 0.02,
+            duration: 0.2,
+          },
+          "<80%"
+        );
+    },
+    { scope: arrow }
+  );
   return (
     <svg
+      ref={arrow}
       width="435"
       height="501"
       viewBox="0 0 435 501"
