@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import { Lato } from "next/font/google";
 import "./globals.css";
 
-import Navigation from "@/components/navigation/Navigation";
-
 // const inter = Inter({ subsets: ["latin"] });
 const lato = Lato({ weight: "400", subsets: ["latin"], variable: "--lato" });
 
@@ -20,10 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={lato.variable}>
-        <Navigation></Navigation>
-        {children}
-      </body>
+      <body className={lato.variable}>{children}</body>
     </html>
   );
 }
